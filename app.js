@@ -35,6 +35,11 @@ app.post("/hello", (req, res) => {
   res.redirect("/");
 });
 
+app.post("/goodbye", (req, res) => {
+  res.clearCookie("username");
+  res.redirect("/");
+});
+
 app.listen(port, () => {
   console.log(`The app is running on localhost:${port}`);
 });
