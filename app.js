@@ -14,7 +14,9 @@ const mineral = "Nickle";
 app.set("view engine", "pug");
 
 app.get("/", (req, res) => {
-  res.render("index");
+  const name = req.cookies.username;
+  if (!name) res.redirect("hello");
+  else res.render("index", { name });
 });
 
 app.get("/cards", (req, res) => {
@@ -23,12 +25,14 @@ app.get("/cards", (req, res) => {
 });
 
 app.get("/hello", (req, res) => {
-  res.render("hello", { name: req.cookies.username });
+  if (req.cookies.username) res.redirect("/");
+  res.render("hello");
 });
 
 app.post("/hello", (req, res) => {
+  if (!req.body.username.trim()) res.render("hello");
   res.cookie("username", req.body.username);
-  res.render("hello", { name: req.body.username });
+  res.redirect("/");
 });
 
 app.listen(port, () => {
