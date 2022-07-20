@@ -2,11 +2,8 @@ extends layout.pug
 
 block content
   section#content
-    ul 
-      each color in colors
-        li(style=`color:${color}`) #{color}
     h2= prompt
     if hint
-      p Hint: #{hint}
+      h4 Hint: #{hint}
     else 
       p There is unfortunately no hint
