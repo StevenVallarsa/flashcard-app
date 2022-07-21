@@ -5,4 +5,6 @@ block content
     h2= text
     if hint
       h4 Hint: #{hint}
+    a(href=`/cards/${id}?side=${button}`)
+      button(type="button" style="font-size: 1.25rem")= button[0].toUpperCase() + button.slice(1)
     
