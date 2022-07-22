@@ -10,9 +10,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  console.log(req);
-  const { side } = req.query;
-  const { id } = req.params;
+  let { side } = req.query;
+  if (!side) side = "question";
+  else if (side !== "answer") side = "question";
+  let { id } = req.params;
+  if (id < 0) id = cards.length - 1;
+  else if (id >= cards.length) id = 0;
   const text = cards[id][side];
   let { hint } = cards[id];
   if (side === "answer") hint = "";

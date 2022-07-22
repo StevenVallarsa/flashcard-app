@@ -6,5 +6,13 @@ block content
     if hint
       h4 Hint: #{hint}
     a(href=`/cards/${id}?side=${button}`)
-      button(type="button" style="font-size: 1.25rem")= button[0].toUpperCase() + button.slice(1)
+      button(type="button" style="font-size: 1.25rem; background-color: lightgreen; border-radius: 10px")= button[0].toUpperCase() + button.slice(1)
+    br
+    a(href=`/cards/${--id}?side=question`)
+      button(type="button" style="margin-top: 20px; font-size: 0.75rem; background-color: darkred; color: white; border-radius: 7px")= "<"
+    a(href="/cards")
+      button(type="button" style="margin-top: 20px; font-size: 0.75rem; background-color: darkred; color: white; border-radius: 7px")= "Random Card"
+    a(href=`/cards/${id += 2}?side=question`)
+      button(type="button" style="margin-top: 20px; font-size: 0.75rem; background-color: darkred; color: white; border-radius: 7px")= ">"
+
     
